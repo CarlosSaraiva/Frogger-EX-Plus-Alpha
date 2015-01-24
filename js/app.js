@@ -49,32 +49,45 @@ Enemy.prototype.update = function(dt) {
 // a handleInput() method.
 var Player = function(position, grid) {
     this.grid = grid;
-    this.gridPosition = new PVector(position.x, position.y);
+    this.playerPosition = new PVector(position.x, position.y);
+    this.lastPosition;
     Entity.call(this, position, 'images/char-boy.png')
 }
 Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
 Player.prototype.handleInput = function(key) {
-    console.log(key);
-    switch(key){
+        switch (key) {
         case 'right':
-        this.gridPosition.x++;
+            this.playerPosition.x++;
 
-        break;
+            break;
         case 'left':
-        this.gridPosition.x--;
-        break;
+            this.playerPosition.x--;
+            break;
 
         case 'up':
-        this.gridPosition.y--;
-        break;
+            this.playerPosition.y--;
+            break;
 
         case 'down':
-        this.gridPosition.y++;
-        break;
+            this.playerPosition.y++;
+            break;
     }
 
-    this.position = this.grid.position[this.gridPosition.x][this.gridPosition.y];
+    if (this.playerPosition.x > this.grid.position.length - 1) {
+        this.playerPosition.x = this.grid.position.length - 1;
+                console.log(this.playerPosition.x);
+    } else if (this.playerPosition.x < 0) {
+        this.playerPosition.x = 0;
+    }
+
+    if (this.playerPosition.y > this.grid.position.length) {
+        this.playerPosition.y = this.grid.position.length
+    } else if (this.playerPosition.y < 0) {
+        this.playerPosition.y = 0;
+    }
+
+    this.position = this.grid.position[this.playerPosition.x][this.playerPosition.y];
 }
 
 Player.prototype.update = function(dt) {
