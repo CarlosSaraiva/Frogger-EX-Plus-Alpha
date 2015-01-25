@@ -1,47 +1,48 @@
-var Player = function(position, grid) {
-    this.grid = grid;
-    this.playerPosition = new PVector(position.x, position.y);
-    this.lastPosition;
-    Entity.call(this, position, 'images/char-boy.png')
+var Player = function(grid) {
+    Entity.call(this, new PVector(2, 5), 'images/char-boy.png', grid);
 }
 Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
 Player.prototype.handleInput = function(key) {
     switch (key) {
         case 'right':
-            this.playerPosition.x++;
+            this.entityPosition.x++;
 
             break;
         case 'left':
-            this.playerPosition.x--;
+            this.entityPosition.x--;
             break;
 
         case 'up':
-            this.playerPosition.y--;
+            this.entityPosition.y--;
             break;
 
         case 'down':
-            this.playerPosition.y++;
+            this.entityPosition.y++;
             break;
     }
     this.checkBorders();
 }
 
 Player.prototype.checkBorders = function() {
-    if (this.playerPosition.x > this.grid.position.length - 1) {
-        this.playerPosition.x = this.grid.position.length - 1;
-        console.log(this.playerPosition.x);
-    } else if (this.playerPosition.x < 0) {
-        this.playerPosition.x = 0;
+    if (this.entityPosition.x > this.grid.position.length - 1) {
+        this.entityPosition.x = this.grid.position.length - 1;
+        console.log(this.entityPosition.x);
+    } else if (this.entityPosition.x < 0) {
+        this.entityPosition.x = 0;
     }
 
-    if (this.playerPosition.y > this.grid.position.length) {
-        this.playerPosition.y = this.grid.position.length
-    } else if (this.playerPosition.y < 0) {
-        this.playerPosition.y = 0;
+    if (this.entityPosition.y > this.grid.position.length) {
+        this.entityPosition.y = this.grid.position.length
+    } else if (this.entityPosition.y < 0) {
+        this.entityPosition.y = 0;
     }
 
-    this.position = this.grid.position[this.playerPosition.x][this.playerPosition.y];
+    this.position = this.grid.position[this.entityPosition.x][this.entityPosition.y];
+}
+
+Player.prototype.checkCollision = function(){
+    
 }
 
 Player.prototype.update = function(dt) {
