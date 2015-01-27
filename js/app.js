@@ -3,7 +3,7 @@
 // Place the player object in a variable called player
 var grid = new Grid(5, 6);
 var allEnemies = [];
-var player = new Player(new PVector(0, 0), grid);
+var player = new Player(grid);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
