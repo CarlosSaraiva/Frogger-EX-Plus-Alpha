@@ -1,7 +1,7 @@
 // Enemies our player must avoid
 var Enemy = function(grid, position) {
     //Calling Entity class
-    Entity.call(this, grid,'images/enemy-bug.png', position)
+    Entity.call(this, position,'images/enemy-bug.png', grid)
 }
 Enemy.prototype = Object.create(Entity.prototype);
 Enemy.prototype.constructor = Enemy;
