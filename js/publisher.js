@@ -2,10 +2,7 @@
 // amazing book JavaScript Patterns
 // http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752
 // github: https://github.com/robdodson/JavaScript-Design-Patterns/blob/master/observer/publisher/main.js
-
-"use strict";
-
-var publisher = {
+var Publisher = {
     subscribers: {
         any: [] // event type: subscribers
     },

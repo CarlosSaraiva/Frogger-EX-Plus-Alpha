@@ -17,3 +17,10 @@ document.addEventListener('keyup', function(e) {
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+
+function collision(){
+  for(var i = 0; i < this.allEnemies.length; i++){
+
+  }
+}
