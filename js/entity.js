@@ -12,7 +12,7 @@ Entity.prototype.getEntityPosition = function(){
 
 // Draw the enemy on the screen, required method for game
 Entity.prototype.render = function() {
-    this.x = this.grid.position[this.entityPosition.x][this.entityPosition.y].x;
-    this.y = this.grid.position[this.entityPosition.x][this.entityPosition.y].y;
-    ctx.drawImage(Resources.get(this.sprite), this.y, this.x);
+    this.x = this.grid.getAbsolutePosition(this.entityPosition.row, this.entityPosition.col).x;
+    this.y = this.grid.getAbsolutePosition(this.entityPosition.row, this.entityPosition.col).y;
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }

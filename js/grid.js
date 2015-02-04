@@ -2,7 +2,7 @@ var Grid = function(rows, cols) {
     this.rows = rows;
     this.cols = cols;
     this.position = new Array();
-    //cols * 101, row * 83
+    this.coordenates;  //cols * 101, row * 83
 
     for (var i = 0; i < this.rows; i++) {
         this.position[i] = new Array();
@@ -12,7 +12,6 @@ var Grid = function(rows, cols) {
     }
 }
 
-Grid.prototype.convertCoordenates = function(position){
-    
-
+Grid.prototype.getAbsolutePosition = function(row, column){
+    return this.position[row][column];
 }

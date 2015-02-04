@@ -3,10 +3,10 @@
 // Place the player object in a variable called player
 var grid = new Grid(6, 5);
 var allEnemies = [];
-allEnemies[0] = new Enemy(grid, new PVector(0,1));
-allEnemies[1] = new Enemy(grid, new PVector(0,2));
-allEnemies[3] = new Enemy(grid, new PVector(0,3));
-var player = new Player(new Grid(6, 5));
+// allEnemies[0] = new Enemy(grid, new GridPosition(1,0);
+// allEnemies[1] = new Enemy(grid, new GridPosition(2,0));
+// allEnemies[3] = new Enemy(grid, new GridPosition(3, 0));
+var player = new Player(new GridPosition(0, 0), grid);
 var collision = new Collision(player, allEnemies);
 
 // This listens for key presses and sends the keys to your

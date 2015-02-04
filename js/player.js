@@ -1,5 +1,5 @@
-var Player = function(grid) {
-    Entity.call(this, new PVector(0, 0), 'images/char-boy.png', grid);
+var Player = function(entityPosition, grid) {
+    Entity.call(this, entityPosition, 'images/char-boy.png', grid);
 }
 Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
@@ -7,35 +7,35 @@ Player.prototype.constructor = Player;
 Player.prototype.handleInput = function(key) {
     switch (key) {
         case 'right':
-            this.entityPosition.y++;
+            this.entityPosition.col++;
 
             break;
         case 'left':
-            this.entityPosition.y--;
+            this.entityPosition.col--;
             break;
 
         case 'up':
-            this.entityPosition.x--;
+            this.entityPosition.row--;
             break;
 
         case 'down':
-            this.entityPosition.x++;
+            this.entityPosition.row++;
             break;
     }
     this.limitBorders();
 }
 
 Player.prototype.limitBorders = function() {
-    if (this.entityPosition.x > this.grid.cols - 1) {
-        this.entityPosition.x = this.grid.cols - 1;
-    } else if (this.entityPosition.x < 0) {
-        this.entityPosition.x = 0;
+    if (this.entityPosition.col > this.grid.cols - 1) {
+        this.entityPosition.col = this.grid.cols - 1;
+    } else if (this.entityPosition.col < 0) {
+        this.entityPosition.col = 0;
     }
 
-    if (this.entityPosition.y > this.grid.rows - 1) {
-        this.entityPosition.y = this.grid.rows - 1;
-    } else if (this.entityPosition.y < 0) {
-        this.entityPosition.y = 0;
+    if (this.entityPosition.row > this.grid.rows - 1) {
+        this.entityPosition.row = this.grid.rows - 1;
+    } else if (this.entityPosition.row < 0) {
+        this.entityPosition.row = 0;
     }   
     console.log(this.entityPosition);
 }
